@@ -4,15 +4,15 @@ on:
   pull_request:
 
 jobs:
-  validate-pr:
-    runs-on: ubuntu-latest
+  # This workflow contains a single job called "trigger_jenkins"
+  trigger_jenkins:
+    # The type of runner that the job will run on
+    runs-on: jenkins-trigger
+    env:
+      REPO_NAME: ${{ github.event.repository.name }}
+      JENKINS_ROOT: ${{ secrets.JENKINS_CONTROLLER_URL }}job/${{ secrets.JENKINS_TRIGGER_ROOT_FOLDER }}/job/${{ secrets.JENKINS_TRIGGER_ORG_FOLDER }}/job
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Display info
-      run: | 
-        pwd
-        tree -a -I '.git'
-        git status
-    - name: Run fast CI (emulated by a short sleep)
-      run: sleep 5
+    - name: trigger single Job
+      run: >
+        curl -X POST -u "${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}"
+        ${{ env.JENKINS_ROOT}}/${{ env.REPO_NAME }}/build\?delay=\0
