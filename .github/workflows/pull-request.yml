@@ -7,7 +7,7 @@ jobs:
   # This workflow contains a single job called "trigger_jenkins"
   trigger_jenkins:
     # The type of runner that the job will run on
-    runs-on: jenkins-trigger
+    runs-on: self-hosted
     env:
       REPO_NAME: ${{ github.event.repository.name }}
       JENKINS_ROOT: ${{ secrets.JENKINS_CONTROLLER_URL }}job/${{ secrets.JENKINS_TRIGGER_ROOT_FOLDER }}/job/${{ secrets.JENKINS_TRIGGER_ORG_FOLDER }}/job
