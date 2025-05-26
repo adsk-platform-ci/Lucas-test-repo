@@ -1,6 +1,6 @@
 @Library("PSL@LKG")
 @Library('fusion-pipeline-configuration')
-@Library('fusion-psl@zhujin/unity_github_reporter')
+@Library('fusion-psl@lucas.zhao/GITHUBAPP')
 
 import groovy.transform.Field
 import groovy.json.JsonBuilder
