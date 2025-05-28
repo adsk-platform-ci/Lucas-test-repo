@@ -10,7 +10,7 @@ import groovy.json.JsonSlurperClassic
 Globals.debug = true
 Globals.urls.github = "https://github.com"
 configureJob(preset: "none")
-//add comments sdsadf
+//
 initReporting(
   slack: [
     includeCommitList: buildInfo.branch.isPr
