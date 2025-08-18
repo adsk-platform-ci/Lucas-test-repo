@@ -1,0 +1,7 @@
+merge_protections:
+  - name: Make sure a JIRA issue is mentioned in the title
+    description: Make sure PR title contains a JIRA issue
+    if:
+      - base = main
+    success_conditions:
+      - title ~= ^\[\w+-\d+\]
